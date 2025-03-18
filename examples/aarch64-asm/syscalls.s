@@ -80,5 +80,18 @@ _start:
     mov X16, #5                 // Unix open system call.
     svc #0x80                   // Call kernel
 
+// Identifier should be stored in X0
 
-// Other calls still need to be added, and will in the future.
+
+
+
+// 6 | close
+
+_start:
+    mov X0, {id}    // Load the file ID into X0
+    mov X16, #6     // Unix close system call.
+    svc #0x80       // Call kernel
+
+
+
+// Other calls still need to be added.
