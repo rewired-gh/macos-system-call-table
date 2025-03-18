@@ -8,15 +8,21 @@
 | 5   | open                             | 0x5   | open or create a file for reading or writing                   |
 | 6   | close                            | 0x6   | delete a descriptor                                            |
 | 7   | wait4                            | 0x7   | wait for process termination                                   |
+| 8   | (old) creat                      | 0x8   |                                                                |
 | 9   | link                             | 0x9   | make a hard file link                                          |
 | 10  | unlink                           | 0xa   | remove directory entry                                         |
+| 11  | (old) execv                      | 0xb   |                                                                |
 | 12  | chdir                            | 0xc   | change current working directory using a specified path        |
 | 13  | fchdir                           | 0xd   | change current working directory using a file descriptor       |
 | 14  | mknod                            | 0xe   | make a special file node                                       |
 | 15  | chmod                            | 0xf   | change mode of file                                            |
 | 16  | chown                            | 0x10  | change owner and group of a file; follows symlinks             |
+| 17  | (old) break                      | 0x11  |                                                                |
 | 18  | getfsstat                        | 0x12  | get list of all mounted file systems                           |
+| 19  | (old) lseek                      | 0x13  |                                                                |
 | 20  | getpid                           | 0x14  | get parent or calling process identification                   |
+| 21  | (old) mount                      | 0x15  |                                                                |
+| 22  | (old) unmount                    | 0x16  |                                                                |
 | 23  | setuid                           | 0x17  | set user and group ID                                          |
 | 24  | getuid                           | 0x18  | get real user identification                                   |
 | 25  | geteuid                          | 0x19  | get effective user identification                              |
@@ -33,9 +39,12 @@
 | 36  | sync                             | 0x24  | synchronize disk block in-core status with that on disk        |
 | 37  | kill                             | 0x25  | send signal to a process                                       |
 | 39  | getppid                          | 0x27  | get parent or calling process identification                   |
+| 40  | (old) lstat                      | 0x28  |                                                                |
 | 41  | dup                              | 0x29  | duplicate an existing file descriptor                          |
 | 42  | pipe                             | 0x2a  | create descriptor pair for interprocess communication          |
 | 43  | getegid                          | 0x2b  | get group process identification                               |
+| 44  | (old) profil                     | 0x2c  |                                                                |
+| 45  | (old) ktrace                     | 0x2d  |                                                                |
 | 46  | sigaction                        | 0x2e  | software signal facilities                                     |
 | 47  | getgid                           | 0x2f  | get group process identification                               |
 | 48  | sigprocmask                      | 0x30  | manipulate current signal mask                                 |
@@ -52,10 +61,21 @@
 | 59  | execve                           | 0x3b  | execute a file                                                 |
 | 60  | umask                            | 0x3c  | set file creation mode mask                                    |
 | 61  | chroot                           | 0x3d  | change root directory                                          |
+| 62  | (old) fstat                      | 0x3e  |                                                                |
+| 63  | *used internally and preserved*  | 0x3f  |                                                                |
+| 64  | (old) getpagesize                | 0x40  |                                                                |
 | 65  | msync                            | 0x41  | synchronize a mapped region                                    |
 | 66  | vfork                            | 0x42  | deprecated system call to create a new process                 |
+| 67  | (old) vread                      | 0x43  |                                                                |
+| 68  | (old) vwrite                     | 0x44  |                                                                |
+| 69  | (old) sbrk                       | 0x45  |                                                                |
+| 70  | (old) sstk                       | 0x46  |                                                                |
+| 71  | (old) mmap                       | 0x47  |                                                                |
+| 72  | (old) vadvise                    | 0x48  |                                                                |
 | 73  | munmap                           | 0x49  | remove a mapping                                               |
 | 74  | mprotect                         | 0x4a  | control the protection of pages                                |
+| 75  | (old) vhangup                    | 0x4b  |                                                                |
+| 76  | (old) vlimit                     | 0x4c  |                                                                |
 | 75  | madvise                          | 0x4b  | give advice about use of memory                                |
 | 78  | mincore                          | 0x4e  | determine residency of memory pages                            |
 | 79  | getgroups                        | 0x4f  | get group access list                                          |
@@ -63,32 +83,49 @@
 | 81  | getpgrp                          | 0x51  | get process group                                              |
 | 82  | setpgid                          | 0x52  | set process group                                              |
 | 83  | setitimer                        | 0x53  | set value of interval timer                                    |
+| 84  | (old) wait                       | 0x54  |                                                                |
 | 85  | swapon                           | 0x55  | start/stop swapping to file/device                             |
 | 86  | getitimer                        | 0x56  | get value of interval timer                                    |
+| 87  | (old) gethostname                | 0x57  |                                                                |
+| 88  | (old) sethostname                | 0x58  |                                                                |
 | 89  | getdtablesize                    | 0x59  | get descriptor table size                                      |
 | 90  | dup2                             | 0x5a  | duplicate an existing file descriptor                          |
+| 91  | (old) getdopt                    | 0x5b  |                                                                |
 | 92  | fcntl                            | 0x5c  | file control                                                   |
 | 93  | select                           | 0x5d  | synchronous I/O                                                |
+| 94  | (old) setdopd                    | 0x5e  |                                                                |
 | 95  | fsync                            | 0x5f  | synchronize a file's in-core state with that on disk           |
 | 96  | setpriority                      | 0x60  | set program scheduling priority                                |
 | 97  | socket                           | 0x61  | create an endpoint for communication                           |
 | 98  | connect                          | 0x62  | initiate a connection on a socket                              |
+| 99  | (old) accept                     | 0x63  |                                                                |
 | 100 | getpriority                      | 0x64  | get program scheduling priority                                |
+| 101 | (old) send                       | 0x65  |                                                                |
+| 102 | (old) receive                    | 0x66  |                                                                |
+| 103 | (old) sigreturn                  | 0x67  |                                                                |
 | 104 | bind                             | 0x68  | bind a name to a socket                                        |
 | 105 | setsockopt                       | 0x69  | set options on sockets                                         |
 | 106 | listen                           | 0x6a  | listen for connections on a socket                             |
+| 107 | (old) vtimes                     | 0x6b  |                                                                |
+| 108 | (old) sigvec                     | 0x6c  |                                                                |
+| 109 | (old) recvmsg                    | 0x6d  |                                                                |
+| 110 | (old) vtrace                     | 0x6e  |                                                                |
 | 111 | sigsuspend                       | 0x6f  | atomically release blocked signals and wait for interrupt      |
 | 116 | gettimeofday                     | 0x74  | get device date and time                                       |
 | 117 | getrusage                        | 0x75  | get information about resource utilization                     |
 | 118 | getsockopt                       | 0x76  | get options on sockets                                         |
+| 119 | (old) resuba                     | 0x77  |                                                                |
 | 120 | readv                            | 0x78  | read input                                                     |
 | 121 | writev                           | 0x79  | write output                                                   |
 | 122 | settimeofday                     | 0x7a  | set device date and time                                       |
 | 123 | fchown                           | 0x7b  | change owner and group of a file                               |
 | 124 | fchmod                           | 0x7c  | change mode of file                                            |
+| 125 | (old) recvfrom                   | 0x7d  |                                                                |
 | 126 | setreuid                         | 0x7e  | set real and effective user IDs                                |
 | 127 | setregid                         | 0x7f  | set real and effective group ID                                |
 | 128 | rename                           | 0x80  | change the name of a file                                      |
+| 129 | (old) truncate                   | 0x81  |                                                                |
+| 130 | (old) ftruncate                  | 0x82  |                                                                |
 | 131 | flock                            | 0x83  | apply or remove an advisory lock on an open file               |
 | 132 | mkfifo                           | 0x84  | make a fifo file                                               |
 | 133 | sendto                           | 0x85  | send a message from a socket                                   |
@@ -99,22 +136,42 @@
 | 138 | utimes                           | 0x8a  | set file access and modification times with a specified path   |
 | 139 | futimes                          | 0x8b  | set file access and modification times with a file descriptor  |
 | 140 | adjtime                          | 0x8c  | correct the time to allow synchronization of the system clock  |
+| 141 | (old) getpeername                | 0x8d  |                                                                |
 | 142 | gethostuuid                      | 0x8e  | return a unique identifier for the current machine             |
+| 143 | (old) sethostid                  | 0x8f  |                                                                |
+| 144 | (old) getrlimit                  | 0x90  |                                                                |
+| 145 | (old) setrlimit                  | 0x91  |                                                                |
+| 146 | (old) killpg                     | 0x92  |                                                                |
 | 147 | setsid                           | 0x93  | create session and set process group ID                        |
+| 148 | (old) setquota                   | 0x94  |                                                                |
+| 149 | (old) qquota                     | 0x95  |                                                                |
+| 150 | (old) getsockname                | 0x96  |                                                                |
 | 151 | getpgid                          | 0x97  | get process group                                              |
 | 152 | setprivexec                      | 0x98  | (not available)                                                |
 | 153 | pread                            | 0x99  | read input                                                     |
 | 154 | pwrite                           | 0x9a  | write output                                                   |
 | 155 | nfssvc                           | 0x9b  | NFS services                                                   |
+| 156 | (old) getdirentries              | 0x9c  |                                                                |
 | 157 | statfs                           | 0x9d  | get file system statistics with a specified path               |
 | 158 | fstatfs                          | 0x9e  | get file system statistics with a file descriptor              |
 | 159 | unmount                          | 0x9f  | mount or dismount a filesystem                                 |
+| 160 | (old) async_daemon               | 0xa0  |                                                                |
 | 161 | getfh                            | 0xa1  | get file handle                                                |
+| 162 | (old) getdomainname              | 0xa2  |                                                                |
+| 163 | (old) setdomainname              | 0xa3  |                                                                |
+| 164 | ?                                | 0xa4  |                                                                |
 | 165 | quotactl                         | 0xa5  | manipulate filesystem quotas                                   |
+| 166 | (old) exportfs                   | 0xa6  |                                                                |
 | 167 | mount                            | 0xa7  | mount or dismount a filesystem                                 |
+| 168 | (old) ustat                      | 0xa8  |                                                                |
 | 169 | csops                            | 0xa9  | (not available)                                                |
 | 170 | csops_audittoken                 | 0xaa  | (not available)                                                |
+| 171 | (old) wait3                      | 0xab  |                                                                |
+| 172 | (old) rpause                     | 0xac  |                                                                |
 | 173 | waitid                           | 0xad  | (not available)                                                |
+| 174 | (old) getdents                   | 0xae  |                                                                |
+| 175 | (old) gc_control                 | 0xaf  |                                                                |
+| 176 | (old) add_profil                 | 0xb0  |                                                                |
 | 177 | kdebug_typefilter                | 0xb1  | (not available)                                                |
 | 178 | kdebug_trace_string              | 0xb2  | (not available)                                                |
 | 179 | kdebug_trace64                   | 0xb3  | (not available)                                                |
@@ -130,10 +187,12 @@
 | 190 | lstat                            | 0xbe  | get file status with a specified path; does not use symlinks   |
 | 191 | pathconf                         | 0xbf  | get configurable pathname variables with a specified path      |
 | 192 | fpathconf                        | 0xc0  | get configurable pathname variables with a file descriptor     |
+| 193 | (old) getfsstat                  | 0xc1  |                                                                |
 | 194 | getrlimit                        | 0xc2  | get maximum system resource consumption for a process          |
 | 195 | setrlimit                        | 0xc3  | set maximum system resource consumption for a process          |
 | 196 | getdirentries                    | 0xc4  | get directory entries in a filesystem independent format       |
 | 197 | mmap                             | 0xc5  | "allocate memory, or map files or devices into memory"         |
+| 198 | (old) __syscall                  | 0xc6  |                                                                |
 | 199 | lseek                            | 0xc7  | reposition read/write file offset                              |
 | 200 | truncate                         | 0xc8  | truncate/extend a file to a specified length with a path       |
 | 201 | ftruncate                        | 0xc9  | truncate/extend a file to a specified length with a descriptor |
@@ -141,18 +200,34 @@
 | 203 | mlock                            | 0xcb  | lock physical pages in memory                                  |
 | 204 | munlock                          | 0xcc  | unlock physical pages in memory                                |
 | 205 | undelete                         | 0xcd  | attempt to recover a deleted file                              |
+| 206 | (old) ATsocket                   | 0xce   |                                                                |
+| 207 | (old) ATgetmsg                   | 0xcf  |                                                                |
+| 208 | (old) ATputmsg                   | 0xd0  |                                                                |
+| 209 | (old) ATsndreq                   | 0xd1  |                                                                |
+| 210 | (old) ATsndrsp                   | 0xd2  |                                                                |
+| 211 | (old) ATgetreq                   | 0xd3  |                                                                |
+| 212 | (old) ATgetrsp                   | 0xd4  |                                                                |
+| 213 | *Reserved for AppleTalk*         | 0xd5  |                                                                |
+| 214 | ?                                | 0xd6  |                                                                |
+| 215 | ?                                | 0xd7  |                                                                |
 | 216 | open_dprotected_np               | 0xd8  | (not available)                                                |
 | 217 | fsgetpath_ext                    | 0xd9  | (not available)                                                |
+| 218 | openat_dprotected_np             | 0xda  | (not available)                                                |
+| 219 | (old) fstat                      | 0xdb  |                                                                |
 | 220 | getattrlist                      | 0xdc  | get file system attributes with a specified path               |
 | 221 | setattrlist                      | 0xdd  | set file system attributes with a specified path               |
 | 222 | getdirentriesattr                | 0xde  | get file system attributes for multiple with a specified path  |
 | 223 | exchangedata                     | 0xdf  | atomically exchange data between two files                     |
+| 224 | (old) checkuseraccess/fsgetpath  | 0xe0  |                                                                |
 | 225 | searchfs                         | 0xe1  | search a volume quickly                                        |
 | 226 | delete                           | 0xe2  | (not available)                                                |
 | 227 | copyfile                         | 0xe3  | (not available)                                                |
 | 228 | fgetattrlist                     | 0xe4  | get file system attributes with a file descriptor              |
 | 229 | fsetattrlist                     | 0xe5  | set file system attributes with a file descriptor              |
 | 230 | poll                             | 0xe6  | synchronous I/O multiplexing                                   |
+| 231 | (old) watchevent                 | 0xe7  |                                                                |
+| 232 | (old) waitevent                  | 0xe8  |                                                                |
+| 233 | (old) modwatch                   | 0xe9  |                                                                |
 | 234 | getxattr                         | 0xea  | get an extended attribute value with a specified path          |
 | 235 | fgetxattr                        | 0xeb  | get an extended attribute value with a file descriptor         |
 | 236 | setxattr                         | 0xec  | set an extended attribute value with a specified path          |
@@ -165,8 +240,10 @@
 | 243 | initgroups                       | 0xf3  | (not available)                                                |
 | 244 | posix_spawn                      | 0xf4  | spawn a process                                                |
 | 245 | ffsctl                           | 0xf5  | (not available)                                                |
-| 247 | nfsclnt                          | 0xf7  | NFS client services                                            |
+| 246 | ?                                | 0xf6  |                                                                |
+| 247 | (old) nfsclnt                    | 0xf7  |                                                                |
 | 248 | fhopen                           | 0xf8  | open a file by file handle                                     |
+| 249 | ?                                | 0xf9  |                                                                |
 | 250 | minherit                         | 0xfa  | control the inheritance of pages                               |
 | 251 | semsys                           | 0xfb  | (not available)                                                |
 | 252 | msgsys                           | 0xfc  | (not available)                                                |
@@ -174,6 +251,7 @@
 | 254 | semctl                           | 0xfe  | control operations on a semaphore set                          |
 | 255 | semget                           | 0xff  | obtain a semaphore id                                          |
 | 256 | semop                            | 0x100 | atomic array of operations on a semaphore set                  |
+| 257 | (old) semconfig                  | 0x101 |                                                                |
 | 258 | msgctl                           | 0x102 | (not available)                                                |
 | 259 | msgget                           | 0x103 | (not available)                                                |
 | 260 | msgsnd                           | 0x104 | (not available)                                                |
@@ -191,6 +269,8 @@
 | 272 | sem_trywait                      | 0x110 | lock a semaphore; does not block on failure                    |
 | 273 | sem_post                         | 0x111 | unlock a semaphore                                             |
 | 274 | sysctlbyname                     | 0x112 | (not available)                                                |
+| 275 | (old) sem_init                   | 0x113 |                                                                |
+| 276 | (old) sem_destroy                | 0x114 |                                                                |
 | 277 | open_extended                    | 0x115 | (not available)                                                |
 | 278 | umask_extended                   | 0x116 | (not available)                                                |
 | 279 | stat_extended                    | 0x117 | (not available)                                                |
@@ -209,6 +289,7 @@
 | 292 | mkdir_extended                   | 0x124 | (not available)                                                |
 | 293 | identitysvc                      | 0x125 | (not available)                                                |
 | 294 | shared_region_check_np           | 0x126 | (not available)                                                |
+| 295 | (old) sharedd_region_map_np      | 0x127 |                                                                |
 | 296 | vm_pressure_monitor              | 0x128 | (not available)                                                |
 | 297 | psynch_rw_longrdlock             | 0x129 | (not available)                                                |
 | 298 | psynch_rw_yieldwrlock            | 0x12a | (not available)                                                |
@@ -234,10 +315,12 @@
 | 318 | aio_read                         | 0x13e | asynchronous read from a file (REALTIME)                       |
 | 319 | aio_write                        | 0x13f | asynchronous write to a file (REALTIME)                        |
 | 320 | lio_listio                       | 0x140 | (not available)                                                |
+| 321 | (old) __pthread_cond_wait        | 0x141 |                                                                |
 | 322 | iopolicysys                      | 0x142 | (not available)                                                |
 | 323 | process_policy                   | 0x143 | (not available)                                                |
 | 324 | mlockall                         | 0x144 | (not available)                                                |
 | 325 | munlockall                       | 0x145 | (not available)                                                |
+| 326 | ?                                | 0x146 |                                                                |
 | 327 | issetugid                        | 0x147 | is current process tainted by uid or gid changes               |
 | 328 | __pthread_kill                   | 0x148 | (not available)                                                |
 | 329 | __pthread_sigmask                | 0x149 | (not available)                                                |
@@ -246,6 +329,7 @@
 | 332 | __pthread_markcancel             | 0x14c | (not available)                                                |
 | 333 | __pthread_canceled               | 0x14d | (not available)                                                |
 | 334 | __semwait_signal                 | 0x14e | (not available)                                                |
+| 335 | (old) utrace                     | 0x14f |                                                                |
 | 336 | proc_info                        | 0x150 | (not available)                                                |
 | 337 | sendfile                         | 0x151 | send a file to a socket                                        |
 | 338 | stat64                           | 0x152 | get file status                                                |
@@ -262,8 +346,11 @@
 | 349 | __pthread_fchdir                 | 0x15d | (not available)                                                |
 | 350 | audit                            | 0x15e | commit BSM audit record to audit log                           |
 | 351 | auditon                          | 0x15f | configure system audit parameters                              |
+| 352 | ?                                | 0x160 |                                                                |
 | 353 | getauid                          | 0x161 | retrieve audit user ID                                         |
 | 354 | setauid                          | 0x162 | set audit indentifier                                          |
+| 355 | (old) getaudit                   | 0x163 |                                                                |
+| 356 | (old) setaudit                   | 0x164 |                                                                |
 | 357 | getaudit_addr                    | 0x165 | retrieve audit session state                                   |
 | 358 | setaudit_addr                    | 0x166 | set audit session state                                        |
 | 359 | auditctl                         | 0x167 | configure system audit parameters                              |
@@ -272,16 +359,21 @@
 | 362 | kqueue                           | 0x16a | create a new kernel event queue for monitoring events          |
 | 363 | kevent                           | 0x16b | add, modify, remove, or retrieve events in the event queue     |
 | 364 | lchown                           | 0x16c | change owner and group of a file; does now follow symlinks     |
+| 365 | (old) stack_snapshot             | 0x16d |                                                                |
 | 366 | bsdthread_register               | 0x16e | (not available)                                                |
 | 367 | workq_open                       | 0x16f | (not available)                                                |
 | 368 | workq_kernreturn                 | 0x170 | (not available)                                                |
 | 369 | kevent64                         | 0x171 | kernel event notification                                      |
-| 370 | __old_semwait_signal             | 0x172 | (not available)                                                |
-| 371 | __old_semwait_signal_nocancel    | 0x173 | (not available)                                                |
+| 370 | (old) __old_semwait_signal       | 0x172 |                                                                |
+| 371 | (old) __old_semwait_signal_nocancel | 0x173 |                                                             |
 | 372 | thread_selfid                    | 0x174 | (not available)                                                |
 | 373 | ledger                           | 0x175 | (not available)                                                |
 | 374 | kevent_qos                       | 0x176 | kernel event notification                                      |
 | 375 | kevent_id                        | 0x177 | (not available)                                                |
+| 376 | ?                                | 0x178 |                                                                |
+| 377 | ?                                | 0x179 |                                                                |
+| 378 | ?                                | 0x17a |                                                                |
+| 379 | ?                                | 0x17b |                                                                |
 | 380 | __mac_execve                     | 0x17c | (not available)                                                |
 | 381 | __mac_syscall                    | 0x17d | (not available)                                                |
 | 382 | __mac_get_file                   | 0x17e | (not available)                                                |
@@ -293,6 +385,9 @@
 | 388 | __mac_get_fd                     | 0x184 | (not available)                                                |
 | 389 | __mac_set_fd                     | 0x185 | (not available)                                                |
 | 390 | __mac_get_pid                    | 0x186 | (not available)                                                |
+| 391 | ?                                | 0x187 |                                                                |
+| 392 | ?                                | 0x188 |                                                                |
+| 393 | ?                                | 0x189 |                                                                |
 | 394 | pselect                          | 0x18a | synchronous I/O multiplexing a la POSIX.1g                     |
 | 395 | pselect_nocancel                 | 0x18b | (not available)                                                |
 | 396 | read_nocancel                    | 0x18c | (not available)                                                |
@@ -336,7 +431,8 @@
 | 434 | pid_resume                       | 0x1b2 | (not available)                                                |
 | 435 | pid_hibernate                    | 0x1b3 | (not available)                                                |
 | 436 | pid_shutdown_sockets             | 0x1b4 | (not available)                                                |
-| 438 | shared_region_map_and_slide_np   | 0x1b6 | (not available)                                                |
+| 437 | (old) shared_region_slide_np     | 0x1b5 |                                                                |
+| 438 | (old) shared_region_map_and_slide_np| 0x1b6 |                                                             |
 | 439 | kas_info                         | 0x1b7 | (not available)                                                |
 | 440 | memorystatus_control             | 0x1b8 | (not available)                                                |
 | 441 | guarded_open_np                  | 0x1b9 | (not available)                                                |
@@ -393,6 +489,7 @@
 | 492 | microstackshot                   | 0x1ec | (not available)                                                |
 | 493 | grab_pgo_data                    | 0x1ed | (not available)                                                |
 | 494 | persona                          | 0x1ee | (not available)                                                |
+| 495 | ?                                | 0x1ef |                                                                |
 | 496 | mach_eventlink_signal            | 0x1f0 | (not available)                                                |
 | 497 | mach_eventlink_wait_until        | 0x1f1 | (not available)                                                |
 | 498 | mach_eventlink_signal_wait_until | 0x1f2 | (not available)                                                |
