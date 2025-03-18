@@ -20,7 +20,7 @@
 | 17  | (old) break                      | 0x11  |                                                                |
 | 18  | getfsstat                        | 0x12  | get list of all mounted file systems                           |
 | 19  | (old) lseek                      | 0x13  |                                                                |
-| 20  | getpid                           | 0x14  | get parent or calling process identification                   |
+| 20  | getpid                           | 0x14  | get calling process identification                             |
 | 21  | (old) mount                      | 0x15  |                                                                |
 | 22  | (old) unmount                    | 0x16  |                                                                |
 | 23  | setuid                           | 0x17  | set user and group ID                                          |
@@ -29,7 +29,7 @@
 | 26  | ptrace                           | 0x1a  | process tracing and debugging                                  |
 | 27  | recvmsg                          | 0x1b  | receive a message from a socket                                |
 | 28  | sendmsg                          | 0x1c  | send a message from a socket                                   |
-| 29  | recvfrom                         | 0x1d  | receive a message from a socket                                |
+| 29  | recvfrom                         | 0x1d  | receive a message from a socket; also reads ancillary data     |
 | 30  | accept                           | 0x1e  | accept a connection on a socket                                |
 | 31  | getpeername                      | 0x1f  | get address of connected peer                                  |
 | 32  | getsockname                      | 0x20  | get socket name                                                |
@@ -38,7 +38,7 @@
 | 35  | fchflags                         | 0x23  | set file flags with a file descriptor                          |
 | 36  | sync                             | 0x24  | synchronize disk block in-core status with that on disk        |
 | 37  | kill                             | 0x25  | send signal to a process                                       |
-| 39  | getppid                          | 0x27  | get parent or calling process identification                   |
+| 39  | getppid                          | 0x27  | get parent process identification                              |
 | 40  | (old) lstat                      | 0x28  |                                                                |
 | 41  | dup                              | 0x29  | duplicate an existing file descriptor                          |
 | 42  | pipe                             | 0x2a  | create descriptor pair for interprocess communication          |
