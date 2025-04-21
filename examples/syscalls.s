@@ -3,7 +3,7 @@
 
 
 
-// This file contains examples of system calls performs in Aarch64 Assembly.
+// This file contains examples of system calls performed in arm64 assembly.
 
 
 
@@ -17,16 +17,9 @@ _start:
     svc #0x80       // Call kernel
 
 
-
-
-
-
 // 2 | fork
 
 // TODO
-
-
-
 
 
 // 3 | read
@@ -44,10 +37,6 @@ _start:
     svc #0x80                   // Call kernel
 
 
-
-
-
-
 // 4 | write
 
 .data
@@ -61,9 +50,6 @@ _start:
     mov X2, #14                     // Specify the length of our string–13 characters
     mov X16, #4                     // Unix write system call.
     svc #0x80                       // Call kernel
-
-
-
 
 
 // 5 | open
@@ -80,10 +66,6 @@ _start:
     mov X16, #5                 // Unix open system call.
     svc #0x80                   // Call kernel
 
-// Identifier should be stored in X0
-
-
-
 
 // 6 | close
 
@@ -93,5 +75,4 @@ _start:
     svc #0x80       // Call kernel
 
 
-
-// Other calls still need to be added.
+// TODO: Examples for the remaining syscalls.
